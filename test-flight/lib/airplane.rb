@@ -1,26 +1,39 @@
 class Airplane
-  attr_reader :type
+  attr_reader :type, :wing_loading, :horsepower
+  attr_accessor :engine, :flying
 
   def initialize(type, wing_loading, horsepower)
     @type = type
     @wing_loading = wing_loading
     @horsepower = horsepower
-    @engine = "off"
+    @engine = false
+    @flying = false
   end
 
   def start
-    if @engine == "off"
-      @engine = "on"
+    if @engine == false
+      @engine = true
       "airplane started"
-    elsif @engine == "on"
+    else
       "airplane already started"
     end
   end
 
-  def takeoff
-    if @engine == "off"
+  def land
+    if @engine == false
       "airplane not started, please start"
-    elsif @engine == "on"
+    elsif @engine == true && @flying == false
+      "airplane already on the ground"
+    else
+      "airplane landed"
+    end
+  end
+
+  def takeoff
+    if @engine == false
+      "airplane not started, please start"
+    else
+      @flying = true
       "airplane launched"
     end
   end
