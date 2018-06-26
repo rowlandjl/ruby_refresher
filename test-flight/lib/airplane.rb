@@ -16,4 +16,13 @@ class Airplane
       "airplane already started"
     end
   end
+
+  def takeoff
+    if @engine == "off"
+      "airplane not started, please start"
+    elsif @engine == "on"
+      "airplane launched"
+    end
+  end
+
 end
