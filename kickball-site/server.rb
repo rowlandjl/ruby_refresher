@@ -12,6 +12,8 @@ end
 
 get "/teams" do
   @league = League.new
+  binding.pry
   "<h1>The LACKP Homepage<h1>"
+  @teams = @league[:teams]
+  erb :index
 end
-
